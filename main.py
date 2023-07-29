@@ -5,10 +5,11 @@ word = random.choice(set)
 
 def start():
 
-    userWord = ''
     attempts = 5
 
     while attempts > 0:
+
+        userWord = ['', '', '', '', '']
         userAttempt = input(": ")
 
         if userAttempt == word:
@@ -16,16 +17,19 @@ def start():
             return True
         
         for i in range(len(word)):
+            
             if userAttempt[i] == word[i]:
-                userWord += userAttempt[i].upper()
+                userWord[i] = userAttempt[i].upper()
             elif userAttempt[i] in word:
-                userWord += userAttempt[i].lower()
+                userWord[i] = userAttempt[i].lower()
             else:
-                userWord += '_'
+                userWord[i] = '_'
 
         attempts -= 1
 
-        print("\n" + userWord + "\n")
+        print("".join(userWord))
+
+    print("\nGAME OVER!\n")
 
     return False
 
